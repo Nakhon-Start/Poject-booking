@@ -33,7 +33,7 @@
                       </div>
 
                       <!-- Modal body -->
-                      <div class="modal-body">
+                      <div class="modal-body text-left">
                         <form action="createRoom" method="POST">
                           @csrf
                           <div>
@@ -41,8 +41,12 @@
                             <input type="text" class="form-control" name="name">
                             <label>Description</label>
                             <input type="text" class="form-control" name="description">
-                            <label>Building_id</label>
-                            <input type="text" class="form-control" name="building_id">
+                            <label>Building_ID</label>
+                            <select class="form-control" name="building_id">
+                              @foreach($room['data'] as $data)
+                              <option value="{{$data['id']}}">{{$data['id']}}</option>
+                              @endforeach
+                            </select>
                           </div>
                           <div class="modal-footer">
                             <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
@@ -55,7 +59,7 @@
                 </div>
               </div>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive text-center">
               <table class="table">
                 <thead class=" text-primary">
                   <tr>
@@ -74,6 +78,9 @@
                     <th>
                       Status
                     </th>
+                    <th>
+                      Create By
+                    </th>
                   </tr>
                 </thead>
                 @foreach($room['data'] as $data)
@@ -84,6 +91,7 @@
                   <td>{{$data['description']}}</td>
                   <td>{{$data['building_id']}}</td>
                   <td>{{$data['is_active']}}</td>
+                  <td>{{$data['create_by']}}</td>
                   <td class="td-actions text-right">
                     <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
                       <i class="material-icons">edit</i>

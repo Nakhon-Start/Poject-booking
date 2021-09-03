@@ -1,6 +1,7 @@
 @extends('layouts.app', ['activePage' => 'table', 'titlePage' => __('Table List')])
 
 @section('content')
+
 <div class="content">
   <div class="container-fluid">
     <div class="row">
@@ -11,7 +12,10 @@
             <p class="card-category"> This is The List Bookings .</p>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
+            <!-- <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"> -->
+            <div class="table-responsive text-center">
               <table class="table">
                 <thead class=" text-primary">
                   <th>
@@ -317,6 +321,7 @@
         </div>
       </div>
     </div>  -->
+    </div>
   </div>
 </div>
 @endsection

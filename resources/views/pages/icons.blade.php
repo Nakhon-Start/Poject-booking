@@ -41,7 +41,10 @@
             <p class="card-category"> This is The List Buildings .</p>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
+            <!-- <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"> -->
+            <div class="table-responsive text-center">
               <table class="table">
                 <thead class=" text-primary">
                   <th>

@@ -109,6 +109,14 @@
           <p>{{ __('ค้นหา') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'history' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('history') }}">
+          <!-- <i class="material-icons">library_books</i> -->
+          <i class="material-icons">content_paste</i>
+
+          <p>{{ __('ประวัติการจอง') }}</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

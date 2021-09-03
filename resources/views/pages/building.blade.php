@@ -168,7 +168,7 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-12 text-left">
+              <div class="col-12 text-right">
                 <!-- Button to Open the Modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                   Add Building
@@ -186,7 +186,7 @@
                       </div>
 
                       <!-- Modal body -->
-                      <div class="modal-body">
+                      <div class="modal-body text-left">
                         <form action="createBuilding" method="POST">
                           @csrf
                           <div>
@@ -200,52 +200,54 @@
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                               </div>
                             </div>
-                            <div class="modal-footer">
-                            </div>
                           </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <tr>
-                        <th>
-                          ID Building
-                        </th>
-                        <th>
-                          Name Building
-                        </th>
-                        <th>
-                          Description
-                        </th>
-                        <th>
-                          Status
-                        </th>
-                      </tr>
-                    </thead>
-                    @foreach($building['data'] as $data)
+              </div>
+              <div class="table-responsive text-center">
+                <table class="table">
+                  <thead class=" text-primary">
                     <tr>
-                    <tr>
-                      <td>{{$data['id']}}</td>
-                      <td>{{$data['name']}}</td>
-                      <td>{{$data['description']}}</td>
-                      <td>{{$data['is_active']}}</td>
-                      <td class="td-actions text-right">
-                        <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
-                          <i class="material-icons">edit</i>
-                          <div class="ripple-container"></div>
-                        </a>
-                      </td>
+                      <th>
+                        ID Building
+                      </th>
+                      <th>
+                        Name Building
+                      </th>
+                      <th>
+                        Description
+                      </th>
+                      <th>
+                        Status
+                      </th>
                     </tr>
-                    @endforeach
-                  </table>
-                </div>
+                  </thead>
+                  @foreach($building['data'] as $data)
+                  <tr>
+                  <tr>
+                    <td>{{$data['id']}}</td>
+                    <td>{{$data['name']}}</td>
+                    <td>{{$data['description']}}</td>
+                    <td>{{$data['is_active']}}</td>
+                    <td class="td-actions text-right">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                    </td>
+                  </tr>
+                  @endforeach
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    @endsection
+  </div>
+</div>
+
+
+@endsection

@@ -110,7 +110,10 @@
             <p class="card-category"> This is The List Rooms .</p>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
+            <!-- <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"> -->
+            <div class="table-responsive text-center">
               <table class="table">
                 <thead class=" text-primary">
                   <th>
@@ -186,7 +189,7 @@
                       </div>
                     </td>
                     <td>
-                    <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
+                      <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
                     </td>
                   </tr>
                   <tr>
@@ -237,7 +240,7 @@
                       </div>
                     </td>
                     <td>
-                    <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
+                      <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
                     </td>
                   </tr>
                   <tr>
@@ -288,7 +291,7 @@
                       </div>
                     </td>
                     <td>
-                    <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
+                      <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
                     </td>
                   </tr>
                   <tr>
@@ -339,7 +342,7 @@
                       </div>
                     </td>
                     <td>
-                    <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
+                      <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
                     </td>
                   </tr>
                   <tr>
@@ -390,7 +393,7 @@
                       </div>
                     </td>
                     <td>
-                    <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
+                      <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
                     </td>
                   </tr>
                   <tr>
@@ -441,7 +444,7 @@
                       </div>
                     </td>
                     <td>
-                    <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
+                      <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
                     </td>
                   </tr>
                 </tbody>
@@ -588,4 +591,5 @@
     </div>  -->
     </div>
   </div>
-  @endsection
+</div>
+@endsection

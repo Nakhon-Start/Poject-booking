@@ -179,6 +179,12 @@
                 <p>{{ __('ค้นหา') }}</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('history') }}">
+                <i class="material-icons">notifications</i>
+                <p>{{ __('ประวัติการจอง') }}</p>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

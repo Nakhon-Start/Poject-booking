@@ -24,7 +24,7 @@ class RoomController extends Controller
         ]);
 
         if ($response->status() != 200) {
-            return 'Unauthenticated';
+            return redirect()->route('room')->with('error', 'Create room fail');
         }
         
         return redirect()->route('room')->with('success', 'Create room success');

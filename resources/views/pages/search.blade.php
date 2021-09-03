@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">ค้นหาช่วงเวลาว่าง</h4>
+                        <h4 class="card-title ">ค้นหาช่วงเวลา</h4>
                         <p class="card-category"> This is Search Room .</p>
                     </div>
                     <label class="col-sm-2 col-form-label">{{ __('ชื่อห้อง') }}</label>
@@ -30,8 +30,15 @@
                         <label class="col-sm-2 col-form-label">{{ __('End-Date') }}</label>
                         <input type="date" id="birthday" name="birthday">
                         </form>
-
-
+                    </div>
+                    <label class="col-sm-2 col-form-label">{{ __('สถานะห้อง') }}</label>
+                    <div class="col-sm-12 form-group ">
+                        <select class="form-control" id="sel1">
+                            <option>ว่าง</option>
+                            <option>ไม่ว่าง</option>
+                            <option>รออนุมัติ</option>
+                            <option>ยกเลิก</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Search</button>
                     <a href="home" class="btn btn-danger" role="button">Cancle</a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -45,12 +46,15 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.icons');
 	})->name('icons');
 
+	Route::get('history', function () {
+		return view('pages.history');
+	})->name('history');
+
 	Route::get('/room', [RoomController::class, 'index'])->name('room');
 	Route::post('/createRoom', [RoomController::class, 'createRoom'])->name('createRoom');
 
-	Route::get('booking', function () {
-		return view('pages.booking');
-	})->name('booking');
+	Route::get('booking', [BookingController::class, 'index'])->name('booking');
+	Route::post('createbooking', [BookingController::class, 'booking'])->name('createbooking');
 
 	Route::get('search', function () {
 		return view('pages.search');

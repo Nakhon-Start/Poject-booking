@@ -24,58 +24,32 @@
                             </div>
                         </div>
                         @endif
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label">{{ __('ห้องที่ต้องการจอง') }}</label>
-                            <div class="col-sm-12 form-group ">
-                                <select class="form-control" id="sel1">
-                                    <option>ห้อง1</option>
-                                    <option>ห้อง2</option>
-                                    <option>ห้อง3</option>
-                                    <option>ห้อง4</option>
+                        <form action="createbooking" method="POST">
+                            @csrf
+                            <div>
+                                <label>room_ID</label>
+                                <select class="col-sm-4 form-control" name="room_id">
+                                    @foreach($room['data'] as $data)
+                                    <option value="{{$data['id']}}">{{$data['id']}} {{$data['name']}}</option>
+                                    @endforeach
                                 </select>
+                                <label>Booking Note</label>
+                                <input type="text" class="col-sm-4 form-control" name="booker_note">
+                                <div class="col-sm-12 form-group">
+                                    <label>Start-Date:</label><br>
+                                    <input type="date" name="start_date">
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <label>End-Date:</label><br>
+                                    <input type="date" name="end_date">
+                                </div>
                             </div>
-                            <label class="col-sm-2 col-form-label">{{ __('รายละเอียดการจอง') }}</label><br>
-                            <div class="container">
-                                <form action="/action_page.php">
-                                    <div class="form-group">
-                                        <!-- <label for="comment">Comment:</label> -->
-                                        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-                                    </div>
-                                </form>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
-
-                            <div class="col-sm-12 form-group">
-                            <form action="/action_page.php">
-                                <label for="birthday">Start-Date:</label><br>
-                                <input type="date" id="birthday" name="birthday">
-                            </form>
-                            </div>
-
-                            <div class="col-sm-12 form-group">
-                            <form action="/action_page.php">
-                                <label for="birthday" >End-Date:</label><br>
-                                <input type="date" id="birthday" name="birthday">
-                            </form> 
-                            </div>
-                           
-
-                            <!-- <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required />
-                      @if ($errors->has('email'))
-                        <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
-                      @endif
+                        </form>
                     </div>
-                  </div>
-                </div> -->
-
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary ">Submit</button>
-                    <a href="home" class="btn btn-danger" role="button">Cancle</a>
-
                 </div>
             </div>
         </div>
