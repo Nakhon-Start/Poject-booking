@@ -371,7 +371,7 @@
                     <td>{{$data['is_active']}}</td>
                     <td class="td-actions text-center">
                     <!-- Button to Open the Modal -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit">
                       <i class="material-icons">edit</i>
                     </button>
 

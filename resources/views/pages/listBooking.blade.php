@@ -39,10 +39,12 @@
                   </th>
                   <th>
                     Satatus
-
                   </th>
                   <th>
                     Edit Booking
+                  </th>
+                  <th>
+                    Cancle Booking
                   </th>
                   <th>
                     Appove
@@ -74,7 +76,7 @@
                       {{$data['booking_status']}}
                     </td>
                     <td class="td-actions text-center">
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit">
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit">
                         <i class="material-icons">edit</i>
                       </button>
                     </td>
@@ -98,6 +100,36 @@
                                 <input type="date" name="start_date">
                                 <label>End-Date </label>
                                 <input type="date" name="end_date">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <td class="td-actions text-center">
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancle">
+                        <i class="fa fa-close" style="font-size:24px"></i> </button>
+                    </td>
+                    <div class="modal" id="cancle">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Cancle</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body text-left">
+                            <form action="setRoom" method="POST">
+                              <div>
+                                <label>Note</label>
+                                <input type="text" class="form-control" name="name" data-target="#id">
                               </div>
                               <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
@@ -133,8 +165,8 @@
                                 </div>
                               </form>
                               <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" data-submit="modal">Accept</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Reject</button>
                               </div>
                             </div>
                           </div>
