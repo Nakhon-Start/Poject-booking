@@ -38,17 +38,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.table_list');
 	})->name('table');
 
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
+	Route::get('listRooms',[RoomController::class, 'ListRoom'])->name('listRooms');
 
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
+	Route::get('listBuildings', [BuildingController::class, 'listBuilding'])->name('listBuildings');
 
 	Route::get('history', function () {
 		return view('pages.history');
 	})->name('history');
+	Route::get('getbuilding', [BuildingController::class, 'getbuilding']);
 
 	Route::get('/room', [RoomController::class, 'index'])->name('room');
 	Route::post('/createRoom', [RoomController::class, 'createRoom'])->name('createRoom');

@@ -25,7 +25,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $response = Http::post('http://127.0.0.1:8000/api/register', [
+        $response = Http::post(config('app.api_host').'/api/register', [
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => $request['password'],

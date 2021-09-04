@@ -30,7 +30,7 @@
                                 <label>room_ID</label>
                                 <select class="col-sm-4 form-control" name="room_id">
                                     @foreach($room['data'] as $data)
-                                    <option value="{{$data['id']}}">{{$data['id']}} {{$data['name']}}</option>
+                                    <option value="{{$data['id']}}">{{$data['id']}}  {{$data['name']}}</option>
                                     @endforeach
                                 </select>
                                 <label>Booking Note</label>

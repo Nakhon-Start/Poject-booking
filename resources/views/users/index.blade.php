@@ -132,13 +132,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('typography') }}">
+              <a class="nav-link" href="{{ route('listRooms') }}">
                 <i class="material-icons">content_paste</i>
                 <p>{{ __('รายการห้องทั้งหมด') }}</p>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('icons') }}">
+              <a class="nav-link" href="{{ route('listBuildings') }}">
                 <i class="material-icons">content_paste</i>
                 <p>{{ __('รายการตึกทั้งหมด') }}</p>
               </a>

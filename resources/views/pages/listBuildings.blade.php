@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'icons', 'titlePage' => __('Icons')])
+@extends('layouts.app', ['activePage' => 'listBuildings', 'titlePage' => __('ListBuildings')])
 
 @section('content')
 <!-- <div class="content">
@@ -62,91 +62,22 @@
 
                 </thead>
                 <tbody>
+                  @foreach($building['data'] as $data)
                   <tr>
                     <td>
-                      1
+                      {{$data['id']}}
                     </td>
                     <td>
-                      Niger
+                      {{$data['name']}}
                     </td>
                     <td>
-                      Oud-Turnhout
-                    </td>
-                    <td class="text-primary">
-                      1
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td>
-                      2
+                      {{$data['description']}}
                     </td>
                     <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-primary">
-                      0
+                      {{$data['is_active']}}
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      3
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-primary">
-                      1
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      4
-                    </td>
-                    <td>
-                      Korea, South
-                    </td>
-                    <td>
-                      Overland Park
-                    </td>
-                    <td class="text-primary">
-                      1
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      5
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-primary">
-                      1
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      6
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-primary">
-                      0
-                    </td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>

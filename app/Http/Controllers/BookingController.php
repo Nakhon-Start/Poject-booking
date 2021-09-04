@@ -10,14 +10,14 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $respone = Http::get('http://127.0.0.1:8000/api/getlistroom');
+        $respone = Http::get(config('app.api_host').'/api/getlistroom');
 
         return view('pages.booking', ['room' => $respone]);
     }
 
     public function booking(Request $request){
 
-        $response = Http::withToken(session('token'))->post('http://127.0.0.1:8000/api/booking', [
+        $response = Http::withToken(session('token'))->post(config('app.api_host').'/api/booking', [
             'room_id' => $request['room_id'],
             'booker_note' => $request['booker_note'],
             'start_date' => $request['start_date'],

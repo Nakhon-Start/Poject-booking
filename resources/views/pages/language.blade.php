@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{ route('typography') }}">
+            <a class="nav-link" href="{{ route('listRooms') }}">
               <i class="material-icons">library_books</i>
               <p>تایپوگرافی</p>
             </a>

@@ -39,6 +39,13 @@
                   <th>
                     Satatus
                   </th>
+                  <th>
+                    Fix Booking
+                  </th>
+                  <th>
+                    Appove
+                  </th>
+
                 </thead>
                 <tbody>
                   <tr>
@@ -63,6 +70,45 @@
                     <td>
                       1
                     </td>
+                    <td class="td-actions text-center">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Appove
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Appove</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-left">
+                              <form action="createRoom" method="POST">
+                                <div>
+                                  <label>Checker Note</label>
+                                  <input type="text" class="form-control" name="description">
+                                </div>
+                              </form>
+                              <div class="modal-footer btn-group">
+                                <button type="button" class="btn btn-primary">Accepet</button>
+                                <button type="button" class="btn btn-danger">Reject</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -85,6 +131,45 @@
                     </td>
                     <td>
                       0
+                    </td>
+                    <td class="td-actions text-center">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Appove
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Appove</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-left">
+                              <form action="createRoom" method="POST">
+                                <div>
+                                  <label>Checker Note</label>
+                                  <input type="text" class="form-control" name="description">
+                                </div>
+                              </form>
+                              <div class="modal-footer btn-group">
+                                <button type="button" class="btn btn-primary">Accepet</button>
+                                <button type="button" class="btn btn-danger">Reject</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -109,6 +194,45 @@
                     <td>
                       -1
                     </td>
+                    <td class="td-actions text-center">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Appove
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Appove</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-left">
+                              <form action="createRoom" method="POST">
+                                <div>
+                                  <label>Checker Note</label>
+                                  <input type="text" class="form-control" name="description">
+                                </div>
+                              </form>
+                              <div class="modal-footer btn-group">
+                                <button type="button" class="btn btn-primary">Accepet</button>
+                                <button type="button" class="btn btn-danger">Reject</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -131,6 +255,45 @@
                     </td>
                     <td>
                       1
+                    </td>
+                    <td class="td-actions text-center">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Appove
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Appove</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-left">
+                              <form action="createRoom" method="POST">
+                                <div>
+                                  <label>Checker Note</label>
+                                  <input type="text" class="form-control" name="description">
+                                </div>
+                              </form>
+                              <div class="modal-footer btn-group">
+                                <button type="button" class="btn btn-primary">Accepet</button>
+                                <button type="button" class="btn btn-danger">Reject</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -155,6 +318,45 @@
                     <td>
                       -1
                     </td>
+                    <td class="td-actions text-center">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Appove
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Appove</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-left">
+                              <form action="createRoom" method="POST">
+                                <div>
+                                  <label>Checker Note</label>
+                                  <input type="text" class="form-control" name="description">
+                                </div>
+                              </form>
+                              <div class="modal-footer btn-group">
+                                <button type="button" class="btn btn-primary">Accepet</button>
+                                <button type="button" class="btn btn-danger">Reject</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -177,6 +379,45 @@
                     </td>
                     <td>
                       0
+                    </td>
+                    <td class="td-actions text-center">
+                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Appove
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Appove</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-left">
+                              <form action="createRoom" method="POST">
+                                <div>
+                                  <label>Checker Note</label>
+                                  <input type="text" class="form-control" name="description">
+                                </div>
+                              </form>
+                              <div class="modal-footer btn-group">
+                                <button type="button" class="btn btn-primary">Accepet</button>
+                                <button type="button" class="btn btn-danger">Reject</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 </tbody>

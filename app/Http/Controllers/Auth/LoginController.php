@@ -49,7 +49,7 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $response = Http::post('http://127.0.0.1:8000/api/login', [
+        $response = Http::post(config('app.api_host').'/api/login', [
             'email' => $credentials['email'],
             'password' => $credentials['password'],
         ]);
@@ -69,7 +69,7 @@ class LoginController extends Controller
     public function logout()
     {
         $token = session()->get('token');
-        Http::withToken($token)->get('http://127.0.0.1:8000/api/logout');
+        Http::withToken($token)->get(config('app.api_host').'/api/logout');
 
         if (session()->has('token')) {
             session()->flush();

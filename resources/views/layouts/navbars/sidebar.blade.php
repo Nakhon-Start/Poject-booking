@@ -47,34 +47,33 @@
           <p>{{ __('รายการจองทั้งหมด') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('typography') }}">
+      <li class="nav-item{{ $activePage == 'listRooms' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('listRooms') }}">
           <!-- <i class="material-icons">library_books</i> -->
           <i class="material-icons">content_paste</i>
 
           <p>{{ __('รายการห้องทั้งหมด') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('icons') }}">
+      <li class="nav-item{{ $activePage == 'listBuildings' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('listBuildings') }}">
           <!-- <i class="material-icons">bubble_chart</i>  -->
           <i class="material-icons">content_paste</i>
           <p>{{ __('รายการตึกทั้งหมด') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'room' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('room') }}">
           <i class="material-icons">location_ons</i>
           <p>{{ __('สร้างห้อง') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'building' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('building') }}">
           <i class="material-icons">notifications</i>
           <p>{{ __('สร้างตึก') }}</p>
         </a>
       </li>
-      
       <!-- <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('language') }}">
           <i class="material-icons">language</i>
