@@ -34,9 +34,8 @@ Route::get('/admin', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
+
+	Route::get('listBooking',[BookingController::class, 'getListBooking'])->name('listBooking');
 
 	Route::get('listRooms',[RoomController::class, 'ListRoom'])->name('listRooms');
 
@@ -49,9 +48,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/room', [RoomController::class, 'index'])->name('room');
 	Route::post('/createRoom', [RoomController::class, 'createRoom'])->name('createRoom');
+	Route::post('/setRoom', [RoomController::class, 'setRoom'])->name('setRoom');
 
 	Route::get('booking', [BookingController::class, 'index'])->name('booking');
 	Route::post('createbooking', [BookingController::class, 'booking'])->name('createbooking');
+
 
 	Route::get('search', function () {
 		return view('pages.search');

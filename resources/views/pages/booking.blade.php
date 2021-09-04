@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">ทำรายการจอง</h4>
+                        <h4 class="card-title ">Booking</h4>
                         <p class="card-category"> This is Booking .</p>
                     </div>
                     <div class="card-body ">
@@ -26,11 +26,11 @@
                         @endif
                         <form action="createbooking" method="POST">
                             @csrf
-                            <div>
+                            <div></div>
                                 <label>room_ID</label>
                                 <select class="col-sm-4 form-control" name="room_id">
                                     @foreach($room['data'] as $data)
-                                    <option value="{{$data['id']}}">{{$data['id']}}  {{$data['name']}}</option>
+                                    <option value="{{$data['id']}}">{{$data['name']}}</option>
                                     @endforeach
                                 </select>
                                 <label>Booking Note</label>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancle</button>
                             </div>
                         </form>
                     </div>

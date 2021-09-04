@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">สร้างผู้ดูแล</h4>
+                        <h4 class="card-title ">Possibility Determine</h4>
                         <p class="card-category"> This is Create Checker . </p>
                     </div>
                     <div class="card-body">

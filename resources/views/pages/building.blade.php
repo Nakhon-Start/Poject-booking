@@ -148,7 +148,7 @@
         </div>
 
       </div>
-      <!-- <div class="alert alert-danger">
+        <div class="alert alert-danger">
           <span style="font-size:18px;">
             <b> </b> This is a PRO feature!</span>
         </div> -->
@@ -157,36 +157,38 @@
 </div>
 </div>  -->
 
-<div class="content">
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+<!-- <div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">สร้างตึก</h4>
+            <h4 class="card-title ">Create Building</h4>
             <p class="card-category"> This is Create Building . </p>
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-12 text-right">
+              <div class="col-12 text-right"> -->
                 <!-- Button to Open the Modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                   Add Building
-                </button>
+                </button> -->
 
                 <!-- The Modal -->
-                <div class="modal" id="myModal">
+                <!-- <div class="modal" id="myModal">
                   <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content"> -->
 
                       <!-- Modal Header -->
-                      <div class="modal-header">
+                      <!-- <div class="modal-header">
                         <h4 class="modal-title">Create Building</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
+                      </div> -->
 
                       <!-- Modal body -->
-                      <div class="modal-body text-left">
+                      <!-- <div class="modal-body text-left">
                         <form action="createBuilding" method="POST">
                           @csrf
                           <div>
@@ -222,6 +224,9 @@
                       <th>
                         Status
                       </th>
+                      <th>
+                        Edit
+                      </th>
                     </tr>
                   </thead>
                   @foreach($building['data'] as $data)
@@ -231,15 +236,212 @@
                     <td>{{$data['name']}}</td>
                     <td>{{$data['description']}}</td>
                     <td>{{$data['is_active']}}</td>
-                    <td class="td-actions text-right">
-                      <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                    <td class="td-actions text-center"> -->
+                      <!-- Button to Open the Modal -->
+                      <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit">
                         <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
-                      </a>
+                      </button>
+
+                      <div class="modal" id="edit">
+                        <div class="modal-dialog">
+                          <div class="modal-content"> -->
+
+                            <!-- Modal Header -->
+                            <!-- <div class="modal-header">
+                              <h4 class="modal-title">Edit Building</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div> -->
+
+                            <!-- Modal body -->
+                            <!-- <div class="modal-body text-left">
+                              <form action="setRoom" method="POST">
+                                @csrf
+                                <div>
+                                  <label>Name Building</label>
+                                  <input type="text" class="form-control" name="name" data-target="#id">
+                                  <label>Description</label>
+                                  <input type="text" class="form-control" name="description">
+                                  <label>Status</label>
+                                  <select class="form-control" id="sel1">
+                                    <option>เปิดใช้งาน</option>
+                                    <option>ไม่เปิดใช้งาน</option>
+                                  </select>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   @endforeach
                 </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- -------------------------------------------------------------- -->
+
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Create Building </h4>
+            <p class="card-category"> This is Create Building . </p>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 text-right">
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                  Add Building
+                </button>
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Create Building</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+
+                      <!-- Modal body -->
+                      <div class="modal-body text-left">
+                      <form action="createBuilding" method="POST">
+                          @csrf
+                          <div>
+                            <label>Name </label>
+                            <input type="text" class="form-control" name="name">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="description">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive text-center">
+              <table class="table">
+                <thead class=" text-primary">
+                  <tr>
+                  <th>
+                        ID Building
+                      </th>
+                      <th>
+                        Name Building
+                      </th>
+                      <th>
+                        Description
+                      </th>
+                      <th>
+                        Status
+                      </th>
+                      <th>
+                        Edit
+                      </th>
+                  </tr>
+                </thead>
+                @foreach($building['data'] as $data)
+                <tr>
+                <tr>
+                    <td>{{$data['id']}}</td>
+                    <td>{{$data['name']}}</td>
+                    <td>{{$data['description']}}</td>
+                    <td>{{$data['is_active']}}</td>
+                    <td class="td-actions text-center">
+                    <!-- Button to Open the Modal -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit">
+                      <i class="material-icons">edit</i>
+                    </button>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Create Building</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body text-left">
+                            <form action="createBuilding" method="POST">
+                              @csrf
+                              <div>
+                              <label>Name</label>
+                              <input type="text" class="form-control" name="name">
+                              <label>Description</label>
+                              <input type="text" class="form-control" name="description">
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                @endforeach
+              </table>
+              <div class="modal" id="edit">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Edit Building</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body text-left">
+                      <form action="setBuilding" method="POST">
+                        @csrf
+                        <div>
+                          <label>Name Building</label>
+                          <input type="text" class="form-control" name="name" data-target="#id">
+                          <label>Description</label>
+                          <input type="text" class="form-control" name="description">
+                          <label>Status</label>
+                          <select class="form-control" id="sel1">
+                            <option>เปิดใช้งาน</option>
+                            <option>ไม่เปิดใช้งาน</option>
+                          </select>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

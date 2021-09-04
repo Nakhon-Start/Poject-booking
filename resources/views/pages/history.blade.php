@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">ประวัติการจอง</h4>
+                        <h4 class="card-title ">Bookings History </h4>
                         <p class="card-category"> This is The List History Bookings .</p>
                     </div>
                     <div class="card-body">
@@ -73,7 +73,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">ประวัติการอนุมัติ</h4>
+                        <h4 class="card-title ">Approval History</h4>
                         <p class="card-category"> This is The List Appove Bookings .</p>
                     </div>
                     <div class="card-body">

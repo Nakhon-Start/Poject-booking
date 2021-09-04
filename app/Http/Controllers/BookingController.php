@@ -28,4 +28,11 @@ class BookingController extends Controller
         }
         return redirect()->route('booking')->with('message', 'Successful booking');
     }
+
+    public function getListBooking()
+    {
+        $respone = Http::get(config('app.api_host').'/api/getlistbooking');
+
+        return view('pages.listBooking', ['booking' => $respone->json()]);
+    }
 }

@@ -1,44 +1,15 @@
-@extends('layouts.app', ['activePage' => 'listBuildings', 'titlePage' => __('ListBuildings')])
+@extends('layouts.app', ['activePage' => 'listBooking', 'titlePage' => __('listBooking')])
 
 @section('content')
-<!-- <div class="content">
-  <div class="container-fluid">
-    <div class="container-fluid">
-      <div class="card card-plain">
-        <div class="card-header card-header-primary">
-          <h4 class="card-title">Material Design Icons</h4>
-          <p class="card-category">Handcrafted by our friends from
-            <a target="_blank" href="https://design.google.com/icons/">Google</a>
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card-body">
-              <div class="iframe-container d-none d-lg-block">
-                <iframe src="https://design.google.com/icons/">
-                  <p>Your browser does not support iframes.</p>
-                </iframe>
-              </div>
-              <div class="col-md-12 d-none d-sm-block d-md-block d-lg-none d-block d-sm-none text-center ml-auto mr-auto">
-                <h5>The icons are visible on Desktop mode inside an iframe. Since the iframe is not working on Mobile and Tablets please visit the icons on their original page on Google. Check the
-                  <a href="https://design.google.com/icons/" target="_blank">Material Icons</a>
-                </h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
+
 <div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">List Building</h4>
-            <p class="card-category"> This is The List Buildings .</p>
+            <h4 class="card-title ">List Booking</h4>
+            <p class="card-category"> This is The List Bookings .</p>
           </div>
           <div class="card-body">
             <!-- <div class="table-responsive">
@@ -51,30 +22,124 @@
                     ID
                   </th>
                   <th>
-                    Building
+                    Note
                   </th>
                   <th>
-                    Description
+                    Room
                   </th>
                   <th>
-                    Status
+                    Start
+                  </th>
+                  <th>
+                    End
+                  </th>
+                  <th>
+                    Booking By
+
+                  </th>
+                  <th>
+                    Satatus
+
+                  </th>
+                  <th>
+                    Edit Booking
+                  </th>
+                  <th>
+                    Appove
                   </th>
 
                 </thead>
                 <tbody>
-                  @foreach($building['data'] as $data)
+                  @foreach($booking['data'] as $data)
                   <tr>
                     <td>
                       {{$data['id']}}
                     </td>
                     <td>
-                      {{$data['name']}}
+                      {{$data['booker_note']}}
                     </td>
                     <td>
-                      {{$data['description']}}
+                      {{$data['room_id']}}
                     </td>
                     <td>
-                      {{$data['is_active']}}
+                      {{$data['start_date']}}
+                    </td>
+                    <td>
+                      {{$data['end_date']}}
+                    </td>
+                    <td>
+                      {{$data['booker_id']}}
+                    </td>
+                    <td>
+                      {{$data['booking_status']}}
+                    </td>
+                    <td class="td-actions text-center">
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit">
+                        <i class="material-icons">edit</i>
+                      </button>
+                    </td>
+                    <div class="modal" id="edit">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Edit Room</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body text-left">
+                            <form action="setRoom" method="POST">
+                              <div>
+                                <label>Note</label>
+                                <input type="text" class="form-control" name="name" data-target="#id">
+                                <label>Start-Date </label>
+                                <input type="date" name="start_date">
+                                <label>End-Date </label>
+                                <input type="date" name="end_date">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Appove
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Appove</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-left">
+                              <form action="createRoom" method="POST">
+                                <div>
+                                  <label>Checker Note</label>
+                                  <input type="text" class="form-control" name="description">
+                                </div>
+                              </form>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   @endforeach

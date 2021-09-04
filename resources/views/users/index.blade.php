@@ -126,7 +126,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('table') }}">
+              <a class="nav-link" href="{{ route('listBooking') }}">
                 <i class="material-icons">content_paste</i>
                 <p>{{ __('รายการจองทั้งหมด') }}</p>
               </a>

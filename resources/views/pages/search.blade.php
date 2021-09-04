@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">ค้นหาช่วงเวลา</h4>
+                        <h4 class="card-title ">Search by time</h4>
                         <p class="card-category"> This is Search Room .</p>
                     </div>
                     <label class="col-sm-2 col-form-label">{{ __('ชื่อห้อง') }}</label>
@@ -49,7 +49,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header card-header-primary">
-                                        <h4 class="card-title ">รายการห้องที่ว่างตามช่วงเวลา</h4>
+                                        <h4 class="card-title "> List Availability</h4>
                                         <p class="card-category"> This is The List Bookings .</p>
                                     </div>
                                     <div class="card-body">
