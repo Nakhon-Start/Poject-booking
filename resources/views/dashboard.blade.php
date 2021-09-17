@@ -1,428 +1,92 @@
-@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Dashboard')])
+@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Home')])
 
 @section('content')
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4 col-md-8 col-sm-8">
-        <div class="card card-stats">
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">content_copy</i>
-            </div>
-            <p class="card-category">จำนวนผู้ใช้งานทั้งหมด</p>
-            <h3 class="card-title">49/50
 
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons text-danger">warning</i>
-              <a href="#pablo">Get More Space...</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-8 col-sm-8">
-        <div class="card card-stats">
-          <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">store</i>
-            </div>
-            <p class="card-category">จำนวนห้องทั้งหมด</p>
-            <h3 class="card-title">260 ห้อง</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">date_range</i> Last 24 Hours
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-8 col-sm-8">
-        <div class="card card-stats">
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">info_outline</i>
-            </div>
-            <p class="card-category">จำนวนตึกทั้งหมด</p>
-            <h3 class="card-title">75 ตึก</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">local_offer</i> Tracked from Github
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-header card-header-info card-header-icon">
-              <div class="card-icon">
-                <i class="fa fa-twitter"></i>
-              </div>
-              <p class="card-category">Followers</p>
-              <h3 class="card-title">+245</h3>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">update</i> Just Updated
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+</head>
+
+<body>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="container">
+          <div id="calendar"></div>
+          <div id="createEventModal" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4>Booking</h4>
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span> <span class="sr-only">close</span></button>
+                </div>
+                <form action="bookingByData" method="POST">
+                  @csrf
+                  <div id="modalBody" class="modal-body text-center">
+                    <div class="form-group">
+                      <label class="col-sm-12 col-form-label ">{{ 'Room ID' }}</label><br>
+                      <input type="text" class="form-control text-center" name="room_id">
+                    </div>
+                    <div class="form-group text-center">
+                      <label class="col-sm-12 col-form-label">{{ 'Booking Note' }}</label><br>
+                      <textarea class="form-control text-center" type="text" name="booker_note"></textarea>
+                    </div>
+                    <div class="center col-sm-10 form-group">
+                      <label class="col-sm-6 col-form-label">{{ 'Start Date' }}</label>
+                      <input type="date" id="birthday" name="start_date">
+                    </div>
+                    <div class="center col-sm-10 form-group">
+                      <label class="col-sm-6 col-form-label">{{ 'End Date' }}</label>
+                      <input type="date" id="birthday" name="end_date">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" id="submitButton">Save</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancle</button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-          </div> -->
+          </div>
+        </div>
+      </div>
     </div>
+    <script>
+      $(document).ready(function() {
+
+        var SITEURL = "{{ url('/') }}";
+
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
+        var calendar = $('#calendar').fullCalendar({
+          events: [{
+            title: 'booking',
+            start: '2021-09-16',
+            end: '2021-09-18'
+          }],
+          displayEventTime: false,
+          selectable: true,
+          selectHelper: true,
+          select: function(start, end, allDay) {
+            $('#createEventModal').modal('show');
+          },
+        });
+      });
+    </script>
   </div>
-  <div class="row">
-    <div class="col-lg-6 col-md-10 col-sm-10">
-      <div class="card card-chart">
-        <div class="card-header card-header-warning">
-          <div class="ct-chart" id="websiteViewsChart"></div>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">ยอดคนสมัครสมาชิกใหม่ต่อเดือน</h4>
-          <p class="card-category">Last Campaign Performance</p>
-        </div>
-        <div class="card-footer">
-          <div class="stats">
-            <i class="material-icons">access_time</i> campaign sent 2 days ago
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 col-md-10 col-sm-10">
-      <div class="card card-chart">
-        <div class="card-header card-header-success">
-          <div class="ct-chart" id="dailySalesChart"></div>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">ยอดเฉลี่ยคนใช้งานเว็ปต่อสัปดาห์</h4>
-          <p class="card-category">
-            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="stats">
-            <i class="material-icons">access_time</i> updated 4 minutes ago
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="col-md-4">
-          <div class="card card-chart">
-            <div class="card-header card-header-danger">
-              <div class="ct-chart" id="completedTasksChart"></div>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">Completed Tasks</h4>
-              <p class="card-category">Last Campaign Performance</p>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">access_time</i> campaign sent 2 days ago
-              </div>
-            </div>
-          </div>
-        </div> -->
-  </div>
-  <!-- <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <div class="card">
-            <div class="card-header card-header-tabs card-header-primary">
-              <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
-                  <span class="nav-tabs-title">Tasks:</span>
-                  <ul class="nav nav-tabs" data-tabs="tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#profile" data-toggle="tab">
-                        <i class="material-icons">bug_report</i> Bugs
-                        <div class="ripple-container"></div>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#messages" data-toggle="tab">
-                        <i class="material-icons">code</i> Website
-                        <div class="ripple-container"></div>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#settings" data-toggle="tab">
-                        <i class="material-icons">cloud</i> Server
-                        <div class="ripple-container"></div>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="tab-content">
-                <div class="tab-pane active" id="profile">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="tab-pane" id="messages">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="tab-pane" id="settings">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-  <div class="col-lg-12 col-md-12">
-    <div class="card">
-      <div class="card-header card-header-warning">
-        <h4 class="card-title">รายชื่อผู้ดูแลประจำแต่ละห้อง</h4>
-        <p class="card-category">การอนุมัติของห้องนั้นจะต้องผ่านจากผู้ดูแลเพียงอย่างเดียว</p>
-      </div>
-      <div class="card-body table-responsive">
-        <table class="table table-hover">
-          <thead class="text-warning">
-            <th>ID</th>
-            <th>Name</th>
-            <th>Room</th>
-            <th>Building</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Dakota Rice</td>
-              <td>36-738</td>
-              <td>Niger</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Minerva Hooper</td>
-              <td>23-789</td>
-              <td>Curaçao</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Sage Rodriguez</td>
-              <td>56-142</td>
-              <td>Netherlands</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Philip Chaney</td>
-              <td>38-735</td>
-              <td>Korea, South</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+</body>
+
+</html>
 
 @endsection
-
-@push('js')
-<script>
-  $(document).ready(function() {
-    // Javascript method's body can be found in assets/js/demos.js
-    md.initDashboardPageCharts();
-  });
-</script>
-@endpush

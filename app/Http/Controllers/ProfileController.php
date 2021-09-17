@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileRequest;
-use App\Http\Requests\PasswordRequest;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 
 class ProfileController extends Controller
 {
@@ -15,33 +13,10 @@ class ProfileController extends Controller
      */
     public function edit()
     {
+        if (!Gate::allows('is_admin')) {
+            return redirect()->route('home')->with('failed', 'Unauthenticated');
+        }
         return view('profile.edit');
     }
 
-    /**
-     * Update the profile
-     *
-     * @param  \App\Http\Requests\ProfileRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(ProfileRequest $request)
-    {
-        auth()->user()->update($request->all());
-
-        return back()->withStatus(__('Profile successfully updated.'));
-    }
-
-    /**
-     * Change the password
-     *
-     * @param  \App\Http\Requests\PasswordRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    
-    public function password(PasswordRequest $request)
-    {
-        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
-
-        return back()->withStatusPassword(__('Password successfully updated.'));
-    }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'listRooms', 'titlePage' => __('ListRooms')])
+@extends('layouts.app', ['activePage' => 'listRooms', 'titlePage' => __('List Room')])
 
 @section('content')
 <!-- <div class="content">
@@ -106,8 +106,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">List Rooms</h4>
-            <p class="card-category"> This is The List Rooms .</p>
+            <h4 class="card-title ">{{ __('listRoom.title') }}</h4>
+            <!-- <p class="card-category"> This is The List Rooms .</p> -->
           </div>
           <div class="card-body">
             <!-- <div class="table-responsive">
@@ -117,25 +117,25 @@
               <table class="table">
                 <thead class=" text-primary">
                   <th>
-                    ID
+                  {{ __('listRoom.id') }}
                   </th>
                   <th>
-                    Room
+                  {{ __('listRoom.room name') }}
                   </th>
                   <th>
-                    Building
+                  {{ __('listRoom.building id') }}
                   </th>
                   <th>
-                    Description
+                  {{ __('listRoom.description') }}
                   </th>
                   <th>
-                    Status
+                  {{ __('listRoom.status') }}
                   </th>
                   <th>
-                    View Room
+                  {{ __('listRoom.room') }}
                   </th>
                   <th>
-                    Booking
+                  {{ __('listRoom.booking') }}
                   </th>
 
                 </thead>
@@ -160,28 +160,29 @@
                     <td>
                       <!-- Button to Open the Modal -->
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                        Open modal
+                      {{ __('listRoom.modal.button open') }}
                       </button>
 
                       <!-- The Modal -->
                       <div class="modal" id="myModal">
                         <div class="modal-dialog">
                           <div class="modal-content">
+                            
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                              <h4 class="modal-title">Modal Heading</h4>
+                              <h4 class="modal-title">{{ __('listRoom.modal.title') }}</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                              Modal body..
+                            {{ __('listRoom.modal.details') }}
                             </div>
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">{{ __('listRoom.modal.button close') }}</button>
                             </div>
 
                           </div>
@@ -189,7 +190,7 @@
                       </div>
                     </td>
                     <td>
-                      <a href="booking" class="btn btn-primary" role="button">Booking Room</a>
+                      <a href="home" class="btn btn-primary" role="button">{{ __('listRoom.button booking') }}</a>
                     </td>
                   </tr>
                   @endforeach

@@ -33,7 +33,7 @@ class RegisterController extends Controller
         ]);
 
         if ($response->status() != 200) {
-            return redirect('resgister')->with('message', 'incorrect information ');
+            return redirect('register')->with('message', trans('auth.register_failed'));
         }
 
         $login = new LoginController();

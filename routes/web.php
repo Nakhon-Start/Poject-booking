@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ApproveController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BuildingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,8 @@ use App\Http\Controllers\BuildingController;
 
 Auth::routes();
 
-
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
-//Route::get('/admin/home', [App\Http\Controllers\HomeController::class,'adminHome'])->name('admin.home')->middleware('is_admin');
+
 
 Route::get('/', function () {
 	return View('welcome');
@@ -34,49 +35,55 @@ Route::get('/admin', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
+	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 
-	Route::get('listBooking',[BookingController::class, 'getListBooking'])->name('listBooking');
-
-	Route::get('listRooms',[RoomController::class, 'ListRoom'])->name('listRooms');
-
+	//Building
+	Route::post('setBuilding', [BuildingController::class, 'setBuilding'])->name('setBuilding');
 	Route::get('listBuildings', [BuildingController::class, 'listBuilding'])->name('listBuildings');
-
-	Route::get('history', function () {
-		return view('pages.history');
-	})->name('history');
+	Route::get('/building', [BuildingController::class, 'index'])->name('building');
+	Route::post('/createBuilding', [BuildingController::class, 'createBuilding'])->name('createBuilding');
+	Route::post('setBuilding/page/{id}', [BuildingController::class, 'setBuildingPage'])->name('setBuildingPage');
+	Route::post('setBuilding/{id}', [BuildingController::class, 'setBuilding'])->name('setBuilding');
 	Route::get('getbuilding', [BuildingController::class, 'getbuilding']);
-
+	//Room
 	Route::get('/room', [RoomController::class, 'index'])->name('room');
+	Route::get('listRooms', [RoomController::class, 'ListRoom'])->name('listRooms');
 	Route::post('/createRoom', [RoomController::class, 'createRoom'])->name('createRoom');
-	Route::post('/setRoom', [RoomController::class, 'setRoom'])->name('setRoom');
-
+	Route::post('setRoom/page/{id}', [RoomController::class, 'setRoomPage'])->name('setRoomPage');
+	Route::post('setRoom/{id}', [RoomController::class, 'setRoom'])->name('setRoom');
+	Route::post('/searchRoom', [RoomController::class, 'SearchForRoomsByTime'])->name('searchRoom');
+	Route::post('/searchRoomId', [RoomController::class, 'SearchForAvailableRoom'])->name('searchRoomId');
+	//Booking
+	Route::get('history', [BookingController::class, 'history'])->name('history');
+	Route::post('show', [BookingController::class, 'show'])->name('show');
+	Route::get('listBooking', [BookingController::class, 'showListBooking'])->name('listBooking');
 	Route::get('booking', [BookingController::class, 'index'])->name('booking');
-	Route::post('createbooking', [BookingController::class, 'booking'])->name('createbooking');
+	Route::post('bookingPage/{id}', [BookingController::class, 'bookingPage'])->name('bookingPage');
+	Route::post('booking/page/{id}', [BookingController::class, 'bookingByRoomId'])->name('bookingByRoomId');
+	Route::post('bookingByData', [BookingController::class, 'bookingByData'])->name('bookingByData');
+	//approve
+	Route::post('approve/page/{id}', [ApproveController::class, 'approvePage'])->name('approvePage');
+	Route::post('approve/{id}', [ApproveController::class, 'approve'])->name('approve');
 
-
-	Route::get('search', function () {
+	Route::get('dashboard', function () {
 		return view('pages.search');
 	})->name('search');
 
-	Route::get('responsibilities', function () {
-		return view('pages.responsibilities');
-	})->name('responsibilities');
+	Route::get('check', function () {
+		return view('pages.check');
+	})->name('check');
 
-	Route::get('/building', [BuildingController::class, 'index'])->name('building');
-	Route::post('/createBuilding', [BuildingController::class, 'createBuilding'])->name('createBuilding');
+	Route::get('responsibilities', [UserController::class, 'getlistChecker'])->name('responsibilities');
+
+	Route::get('check', [UserController::class, 'getBuildingFormID'])->name('check');
 
 	Route::get('rtl-support', function () {
 		return view('pages.language');
 	})->name('language');
-
+	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::get('upgrade', function () {
 		return view('pages.upgrade');
 	})->name('upgrade');
-});
-
-Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+	
 });

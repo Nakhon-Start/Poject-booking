@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('Material Dashboard')])
+@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('Booking System')])
 
 @section('content')
 <div class="container" style="height: auto;">
@@ -22,11 +22,6 @@
                 </div>
                 <input type="email" name="email" class="form-control" placeholder="{{ __('Email') }}" required>
               </div>
-              @if ($errors->has('email'))
-                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                  <strong>{{ $errors->first('email') }}</strong>
-                </div>
-              @endif
             </div>
             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
@@ -37,11 +32,11 @@
                 </div>
                 <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required>
               </div>
-              @if ($errors->has('password'))
-                <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
-                  <strong>{{ $errors->first('password') }}</strong>
+              @if (session('message'))
+                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
+                  <strong>{{ session('message') }}</strong>
                 </div>
-              @endif
+                @endif
             </div>
             <br>
             <div class="form-check mr-auto ml-3 mt-3">

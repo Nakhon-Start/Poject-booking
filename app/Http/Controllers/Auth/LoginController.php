@@ -55,7 +55,7 @@ class LoginController extends Controller
         ]);
         
         if ($response->status() != 200) {
-            return redirect()->route('login')->with('message','Invalid email or password');
+            return redirect()->route('login')->with('message' , trans('auth.failed'));
         }
 
         if (Auth::attempt($credentials)) {
@@ -77,4 +77,6 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+
 }

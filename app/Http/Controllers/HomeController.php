@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
+
 class HomeController extends Controller
 {
     /**
@@ -19,13 +23,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard');
-    }
+        
+        if ($request->ajax()) {
 
-    public function adminHome()
-    {
-        return view('adminHome');
+            $data = Event::whereDate('start', '>=', $request->start)
+                ->whereDate('end',   '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
+
+            return $data;
+        }
+
+        return view('dashboard');
     }
 }
