@@ -17,6 +17,77 @@
           <span class="bi bi-pencil-square"> {{ __('sidebar.home') }}</span>
         </a>
       </li>
+      
+     
+      <li class="nav-item{{ $activePage == 'bookingByTime' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('calerdar') }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16">
+            <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+          </svg>
+          <span class="bi bi-calendar-plus"> {{ __('sidebar.create.booking by time') }}</span>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'history' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('history') }}">
+          <!-- <i class="material-icons">library_books</i> -->
+          <!-- <i class="material-icons">content_paste</i> -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+            <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+            <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+          </svg>
+          <span class="bi bi-journals"> {{ __('sidebar.history') }}</span>
+        </a>
+      </li>
+      @can('is_checker')
+      <hr>
+      <h5 class="card-title text-center">{{ __('sidebar.checker') }}</h5>
+
+      <li class="nav-item{{ $activePage == 'room' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('room') }}">
+          <!-- <i class="material-icons">location_ons</i> -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+          </svg>
+          <span class="bi bi-plus-square"> {{ __('sidebar.create.room') }}</span>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'listBooking' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('listBooking') }}">
+          <!-- <i class="material-icons">content_paste</i> -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+          </svg>
+          <span class="bi bi-file-text"> {{ __('sidebar.list.booking') }}</span>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'appoveHistory' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('appoveHistory') }}">
+          <!-- <i class="material-icons">library_books</i> -->
+          <!-- <i class="material-icons">content_paste</i> -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+            <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+            <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+          </svg>
+          <span class="bi bi-journals"> {{ __('sidebar.appove') }}</span>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'check' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('check') }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="24" fill="currentColor" class="bi bi-calendar2-check" viewBox="0 0 16 16">
+          <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+          <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+        </svg>
+          <span class="bi bi-calendar-plus"> {{ __('sidebar.check') }}</span>
+        </a>
+      </li>
+      @endcan
+
+      @can('is_admin')
+      <hr>
+      <h5 class="card-title text-center">{{ __('sidebar.admin') }}</h5>
       <li class="nav-item{{ $activePage == 'search' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('search') }}">
           <!-- <i class="material-icons">library_books</i> -->
@@ -27,16 +98,6 @@
           <span class="bi bi-search">{{ __('sidebar.dashboard') }}</p>
         </a>
       </li>
-      @can('is_admin')
-      <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('user.index') }}">
-          <!-- <span class="sidebar-mini"> UM </span> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
-            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
-          </svg>
-          <span class="bi bi-people"> {{ __('sidebar.edit.user') }} </span>
-        </a>
-      </li>
       <li class="nav-item{{ $activePage == 'building' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('building') }}">
           <!-- <i class="material-icons">notifications</i> -->
@@ -45,6 +106,15 @@
             <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
           </svg>
           <span class="bi bi-plus-square"> {{ __('sidebar.create.building') }}</span>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('user') }}">
+          <!-- <span class="sidebar-mini"> UM </span> -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+          </svg>
+          <span class="bi bi-people"> {{ __('sidebar.edit.user') }} </span>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'responsibilities' ? ' active' : '' }}">
@@ -58,87 +128,9 @@
         </a>
       </li>
       @endcan
-      <li class="nav-item{{ $activePage == 'listBooking' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('listBooking') }}">
-          <!-- <i class="material-icons">content_paste</i> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-          </svg>
-          <span class="bi bi-file-text"> {{ __('sidebar.list.booking') }}</span>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'listRooms' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('listRooms') }}">
-          <!-- <i class="material-icons">library_books</i> -->
-          <!-- <i class="material-icons">content_paste</i> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-          </svg>
-          <span class="bi bi-file-text">{{ __('sidebar.list.room') }} </span>
-        </a>
-      </li>
+    
 
-      <li class="nav-item{{ $activePage == 'listBuildings' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('listBuildings') }}">
-          <!-- <i class="material-icons">bubble_chart</i>  -->
-          <!-- <i class="material-icons">content_paste</i> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-          </svg>
-          <span class="bi bi-file-text"> {{ __('sidebar.list.building') }}</span>
-        </a>
-      </li>
-      @can('is_checker')
-      <li class="nav-item{{ $activePage == 'room' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('room') }}">
-          <!-- <i class="material-icons">location_ons</i> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
-            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
-          </svg>
-          <span class="bi bi-plus-square"> {{ __('sidebar.create.room') }}</span>
-        </a>
-      </li>
-      @endcan
-      <li class="nav-item{{ $activePage == 'booking' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('booking') }}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16">
-            <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
-            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-          </svg>
-          <span class="bi bi-calendar-plus"> {{ __('sidebar.create.booking') }}</span>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'history' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('history') }}">
-          <!-- <i class="material-icons">library_books</i> -->
-          <!-- <i class="material-icons">content_paste</i> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
-            <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
-            <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
-          </svg>
 
-          <span class="bi bi-journals"> {{ __('sidebar.history') }}</span>
-        </a>
-      </li>
-      
-      @if(Gate::check('is_checker') || Gate::check('is_admin'))
-      <li class="nav-item{{ $activePage == 'check' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('check') }}">
-          <!-- <i class="material-icons">library_books</i> -->
-          <!-- <i class="material-icons">content_paste</i> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="25" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16">
-            <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
-            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-          </svg>
-          <span class="bi bi-calendar-plus"> {{ __('sidebar.check') }}</span>
-        </a>
-      </li>
-      @endif
-
-  
     </ul>
   </div>
 </div>

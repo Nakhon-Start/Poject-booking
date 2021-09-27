@@ -4,6 +4,7 @@ return [
     'title' => 'List Booking',
     'id' =>'ID',
     'room' => 'Room Name',
+    'building' => 'Building Name',
     'note' => 'Note',
 
     'date' => [
@@ -15,6 +16,13 @@ return [
     'status' => 'Status',
     'edit booking' => 'Edit Booking',
     'cancle booking' => 'Cancle Booking',
-    'appove' => 'Appove'
+    'appove' => 'Appove',
+
+    'status booking' => [
+        'approve' => 'Approve',
+        'disapproved' => 'Disapproved',
+        'pending' => 'Pending',
+        'cancle' => 'Cancle'
+    ]
 
 ];

@@ -19,4 +19,12 @@ return [
 
     'button booking' => 'จองห้อง',
 
+    'statusRoom' => [
+        'available' => 'เปิดใช้งาน',
+        'unavailable' => 'ไม่เปิดใช้งาน'
+    ],
+
+    'limited people' => 'จำนวนคนที่รองรับ',
+    'type' => 'ประเภทของห้อง',
+
 ];

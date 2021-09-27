@@ -17,4 +17,7 @@ return [
     'password' => 'Incorrect password ',
     'register_failed' => 'incorrect information',
 
+
+    
+
 ];

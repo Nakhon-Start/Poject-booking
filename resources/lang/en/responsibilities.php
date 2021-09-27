@@ -10,10 +10,13 @@ return [
         'success' => 'Responsibilities success',
         'failed' => 'Responsibilities failed'
     ],
-
+    'createResponsibilities' => [
+        'success' => 'Set responsibilities success',
+        'failed' => 'Set responsibilities failed'
+    ],
     'checker id' => 'ID Checker',
-    'user id' => 'ID User',
-    'building id' => 'ID Building',
+    'user id' => 'Username',
+    'building id' => 'Building Name',
 
     'modal' => [
         'button' => 'ADD CHECKER',
@@ -25,4 +28,3 @@ return [
     ]
 
 ];
-

@@ -18,12 +18,14 @@ return [
     'create' => [
         'room' => 'Create Room',
         'building' => 'Create Building',
-        'booking' => 'Booking'
+        'booking' => 'Booking By Search Room',
+        'booking by time' => 'Search room by time'
     ],
 
     'check'=>'Check',
     'responsibilities'=> 'Responsibilities',
     'dashboard' => 'Dashboard',
     'history' => 'Booking History',
+    'appove' => 'Appove History',
     
 ];

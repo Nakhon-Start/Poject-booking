@@ -39,7 +39,14 @@
                       {{$data['description']}}
                     </td>
                     <td>
-                      {{$data['is_active']}}
+                      @if($data['is_active'] == 1)
+                        {{ __('building.statusBuilding.available') }}
+
+                      @elseif($data['is_active'] == 0)
+                        {{ __('building.statusBuilding.unavailable') }}
+
+                      @endif
+
                     </td>
                   </tr>
                   @endforeach

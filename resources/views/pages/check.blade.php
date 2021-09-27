@@ -10,15 +10,15 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">{{ __('check.title') }}</h4>
-                        <p class="card-category"> This is The List Check Building / สิทธิ์ของตัวเองในตึก .</p>
+                        <input class="form-control" id="check" type="text" placeholder="พิมพ์ชื่อตึกเพื่อค้นหา..">
                     </div>
                     <div class="card-body">
                         <div class="table-responsive text-center">
                             <table class="table">
                                 <thead class=" text-primary">
-                                    <th>
+                                    <!-- <th>
                                         {{ __('check.building id') }}
-                                    </th>
+                                    </th> -->
                                     <th>
                                         {{ __('check.name') }}
                                     </th>
@@ -29,13 +29,23 @@
                                         {{ __('check.is active') }}
                                     </th>
                                 </thead>
-                                <tbody>
+                                <tbody id="myTable">
                                     @foreach ($respone as $data)
                                     <tr></tr>
-                                        <td>{{$data->building_id}}</td>
+                                        <!-- <td>{{$data->building_id}}</td> -->
                                         <td>{{$data->building->name}}</td>
                                         <td>{{$data->building->description}}</td>
-                                        <td>{{$data->building->is_active}}</td>
+                                        <td>
+
+                                            @if ($data->building->is_active == 1)
+                                                {{ __('เปิดใช้งาน') }}
+
+                                            @elseif ($data->building->is_active == 0)
+                                                {{ __('ไม่เปิดใช้งาน') }}
+
+                                            @endif
+
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

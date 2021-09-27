@@ -8,12 +8,16 @@ return [
 
     'id' => 'ID',
     'room name' => 'Room Name',
+    'building name' => 'Building Name',
     'note' => 'Note',
 
     'date booking'=> [
         'start' => 'Start Date',
         'end' => 'End Date',
     ],
+
+    'checker note' => 'Check note',
+    'appove by' => 'Appove By',
 
     'status' => 'Status',
     'id booking' => 'ID Booking',

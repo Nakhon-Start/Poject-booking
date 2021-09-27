@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
-use Symfony\Component\HttpFoundation\Request;
+use App\Http\Controllers\BuildingController;
+use Illuminate\Http\Request;
+
 
 class RoomController extends Controller
 {
@@ -15,7 +18,7 @@ class RoomController extends Controller
         if (!Gate::allows('is_checker')) {
             throw new Exception("Unauthenticated.");
         }
-        
+
         $building = new BuildingController();
         return view('pages.room', ['room' => $this->getListRoom(), 'building' => $building->getBuilding()]);
     }
@@ -28,7 +31,7 @@ class RoomController extends Controller
     public function getListRoom()
     {
         $response  = Http::get(config('app.api_host') . '/api/getlistroom');
-        return $response;
+        return $response->object();
     }
 
     public function createRoom(Request $request)
@@ -36,7 +39,10 @@ class RoomController extends Controller
         $response = Http::withToken(session('token'))->post(config('app.api_host') . '/api/createroom', [
             'name' => $request['name'],
             'description' => $request['description'],
+            'quantity' => $request['quantity'],
+            'room_type' => $request['room_type'],
             'building_id' => $request['building_id'],
+
         ]);
 
         if ($response->status() != 200) {
@@ -53,44 +59,44 @@ class RoomController extends Controller
 
     public function getRoom($id)
     {
-        $response = Http::get(config('app.api_host') . '/api/getroom/'.$id);
+        $response = Http::get(config('app.api_host') . '/api/getroom/' . $id);
 
         return $response->json('user');
     }
 
-    public function SearchForRoomsByTime(Request $request)
+    public function bookingByTime()
     {
-        $response = Http::post(config('app.api_host') . '/api/SearchForRoomsByTime', [
-            'start_date' => $request['start_date'],
-            'end_date' => $request['end_date'],
-        ]);
-        if($response->status() != 200){
-            return redirect()->route('booking')->with('emptyRoom', trans('room.empty.time',['time_start' => $request['start_date'],'time_emd' => $request['end_date']]));
-        }
-
-        return redirect()->route('booking')->with('data', $response->object());
+        $buuilding = new BuildingController();
+        return view('pages.bookingByTime', ['building' => $buuilding->getBuilding()]);
     }
 
     public function SearchForAvailableRoom(Request $request)
     {
-
+        $events = [];
         $response = Http::post(config('app.api_host') . '/api/SearchForAvailableRoom', [
             'room_id' => $request['room_id'],
         ]);
-        if($response->status() != 200){
-            return redirect()->route('booking')->with('emptyTime', trans('room.empty.room'));
-        }
 
-        return redirect()->route('booking')->with('data', $response->object());
+        $room = $response->object();
+        foreach ($room as $data) {
+            $events[] = [
+                'title' => $data->booker_note,
+                'start' =>  $data->start_date,
+                'end' => date('Y-m-d H:i:s', strtotime($data->end_date . ' +1 day')),
+            ];
+        }
+        return response()->json($events);
     }
 
-    public function setRoom(Request $request, $id)
+    public function setRoom(Request $request)
     {
         $response = Http::withToken(session('token'))->put(config('app.api_host') . '/api/setroom', [
-            'id' => $id,
+            'id' => $request['id'],
             'name' => $request['name'],
             'description' => $request['description'],
             'is_active' => $request['is_active'],
+            'quantity' => $request['quantity'],
+            'room_type' => $request['room_type'],
         ]);
 
         if ($response->status() != 200) {

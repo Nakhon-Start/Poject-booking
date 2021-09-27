@@ -14,5 +14,6 @@ return [
     'building' => 'Building',
     'status' => 'Status',
     'booking' => 'Booking',
+    'note' => 'Booking Note',
     'button' => 'Booking',
 ];

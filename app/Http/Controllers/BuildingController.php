@@ -11,22 +11,26 @@ class BuildingController extends Controller
     public function index()
     {
         if (!Gate::allows('is_admin')) {
-            return redirect()->route('listBooking')->with('failed', 'Unauthenticated');
+            return redirect()->route('home')->with('failed', 'Unauthenticated');
         }
 
-        return view('pages.building', ['building' => $this->getBuilding()])
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        
+        // $building = Post::latest()->paginate(5);   
+
+        return view('pages.building', ['building' => $this->getBuilding()]);
+            // ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function listBuilding()
     {
+
         return view('pages.listBuildings', ['building' => $this->getBuilding()]);
     }
 
     public function getBuilding()
     {
         $respone = Http::get(config('app.api_host') . '/api/getlistbuilding');
-        return $respone;
+        return $respone->object();
     }
 
     public function createBuilding(Request $request)
@@ -34,15 +38,18 @@ class BuildingController extends Controller
         if (!Gate::allows('is_admin')) {
             return redirect()->route('listBooking')->with('failed', 'Unauthenticated');
         }
+
         $respone = Http::withToken(session('token'))->post(config('app.api_host') . '/api/createtbuilding', [
+            'id' => $request['id'],
             'name' => $request['name'],
             'description' => $request['description'],
+            'is_active' => $request['is_active'],
         ]);
 
         if ($respone->status() != 200) {
-            return redirect()->route('building')->with('failed', trans('building.createBuilding.failed'));
+            return redirect()->route('building')->with('failed', trans('building.create.failed'));
         }
-        return redirect()->route('building')->with('success', trans('building.createBuilding.success'));
+        return redirect()->route('building')->with('success', trans('building.create.success'));
     }
 
 
@@ -54,13 +61,15 @@ class BuildingController extends Controller
         return View('pages.setBuilding', compact('id'));
     }
 
-    public function setBuilding(Request $request, $id)
+
+    public function setBuilding(Request $request)
     {
         if (!Gate::allows('is_admin')) {
-            return redirect()->route('listBooking')->with('failed', 'Unauthenticated');
+            return redirect()->route('calerdar')->with('failed', 'Unauthenticated');
         }
+
         $respone = Http::withToken(session('token'))->put(config('app.api_host') . '/api/setbuilding', [
-            'id' => $id,
+            'id' => $request['id'],
             'name' => $request['name'],
             'description' => $request['description'],
             'is_active' => $request['is_active'],

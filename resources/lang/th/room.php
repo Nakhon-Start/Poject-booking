@@ -11,6 +11,11 @@ return [
         'success' => 'แก้ไขข้อมูลสำเร็จ',
         'failed' => 'ไม่สามารถแก้ไขข้อมูลได้'
     ],
+    'statusRoom' => [
+        'available' => 'เปิดใช้งาน',
+        'unavailable' => 'ไม่เปิดใช้งาน'
+    ],
+    
     
     'id' => 'รหัสห้อง',
     'room name' => 'ชื่อห้อง',
@@ -19,15 +24,22 @@ return [
     'status' => 'สถานะ',
     'create' => 'ผู้ดูแล',
     'edit' => 'แก้ไข',
+    'submit' => 'ยืนยัน',
 
     'modal' => [
         'button' => 'สร้างห้อง',
         'title' => 'สร้างห้อง',
         'room name' => 'ชื่อห้อง',
         'description' => 'รายละเอียด',
-        'building id' => 'รหัสตึก',
-        'button submit' => 'บันทึก',
-        'button close' => 'ปิด',
+        'building id' => 'ตึก',
+        'button submit' => 'ยืนยัน',
+        'button close' => 'ยกเลิก',
+        'limited people' => 'จำนวนคนที่รองรับ',
+        'type' => 'ประเภทห้อง'
         
-    ]
+    ],
+
+    'limited people' => 'จำนวนคนที่รองรับ',
+    'type' => 'ประเภทห้อง'
+
 ];

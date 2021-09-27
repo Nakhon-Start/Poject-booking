@@ -1,14 +1,18 @@
 <?php
 
 return [
-    'title' => 'List Room',
+    'title' => 'List Room Information',
     'id' => 'ID',
     'room name' => 'Room Name',
-    'building id' => 'Building ID',
+    'building id' => 'Building Name',
     'description' => 'Description',
     'status' => 'Status',
     'room' => 'Room Information',
-    'booking' => 'Booking',
+    'booking' => 'Reservation',
+    'attendant' => 'Attendant',
+    'limited people' => 'Limited people',
+    'type' => 'Room Type',
+
 
     'modal' => [
         'button open' => 'Open Room Information',
@@ -18,4 +22,9 @@ return [
     ],
 
     'button booking' => 'Booking Room',
+
+    'statusRoom' => [
+        'available' => 'Available',
+        'unavailable' => 'Unavailable'
+    ],
 ];

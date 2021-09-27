@@ -14,7 +14,12 @@ return [
     ],
     'empty' => [
         'room' => 'Empty room',
-        'time' => 'empty time  :time_start to  :time_start'
+        'time' => 'empty time  :time_start to  :time_end',
+        'error' => 'incorrect information Please fill out the information again.'
+    ],
+    'statusRoom' => [
+        'available' => 'Available',
+        'unavailable' => 'Unavailable'
     ],
 
     'id' => 'ID Room',
@@ -22,8 +27,11 @@ return [
     'description' => 'Description',
     'building' => 'Building',
     'status' => 'Status',
-    'create' => 'Create By',
+    'create' => 'Attendant',
     'edit' => 'Edit',
+    'limited people' => 'Limited people',
+    'type' => 'Room Type',
+   
 
     'modal' => [
         'button' => 'ADD ROOM',
@@ -33,11 +41,13 @@ return [
         'building id' => 'Building ID',
         'button submit' => 'Submit',
         'button close' => 'Close',
+        'quantity' => 'Limited people',
+        'type' => 'Room Type',
     ],
 
     'setroom' => [
         'button' => 'Save',
-        'title' => 'Edit Room',
+        'title' => 'Reservation',
         'room name' => 'Room Name',
         'description' => 'Description',
         'building id' => 'Building ID',

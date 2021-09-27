@@ -1,13 +1,14 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'home', 'title' => __('Booking System')])
+@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'home', 'title' => __('sidebar.booking system')])
 
 @section('content')
-<div class="container" style="height: auto;">
+<!-- <div class="container" style="height: auto;">
   <div class="row justify-content-center">
-      <div class="col-lg-7 col-md-8">
-          <h1 class="text-white text-center">{{ __('Welcome to Meeting Room Reservation System') }}</h1>
+      <div class="col-lg-7 col-md-8" >
+        <br><br>
+          <h1 class="text-white text-center">{{ __('sidebar.welcome') }}</h1>
       </div>
   </div>
-</div>
+</div> -->
 <!-- 
 <!DOCTYPE html>
 <html>

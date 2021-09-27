@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
 use Illuminate\Http\Request;
-use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\BuildingController;
+
 
 class HomeController extends Controller
 {
     /**
+     * 
      * Create a new controller instance.
      *
      * @return void
@@ -23,18 +25,41 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
-        
-        if ($request->ajax()) {
+        $buuilding = new BuildingController();
+        return view('dashboard', ['room' => $buuilding->getBuilding(), 'building' => $buuilding->getBuilding()]);
+    }
 
-            $data = Event::whereDate('start', '>=', $request->start)
-                ->whereDate('end',   '<=', $request->end)
-                ->get(['id', 'title', 'start', 'end']);
-
-            return $data;
+    public function searchBuild(Request $request)
+    {
+        $buuilding = new BuildingController();
+        if ($request['building_id'] == "null") {
+            return view('dashboard', ['room' => $buuilding->getBuilding(), 'building' => $buuilding->getBuilding()]);
         }
 
-        return view('dashboard');
+        $response  = Http::post(config('app.api_host') . '/api/getbuilding', [
+            'building_id' => $request['building_id']
+        ]);
+        return view('dashboard', ['room' => $response->object(), 'building' => $buuilding->getBuilding()]);
+    }
+
+    public function search()
+    {
+        $building = new BuildingController();
+        $room = new RoomController();
+        $user = new UserController();
+        $booking = new BookingController();
+
+        return view(
+            'pages.search',
+            [
+                'building' => $building->getBuilding(),
+                'room' => $room->getListRoom(),
+                'user' => $user->getAllUser(),
+                'booking' => $booking->getListBooking(),
+                'userOline' => $user->onlineUser()
+            ]
+        );
     }
 }

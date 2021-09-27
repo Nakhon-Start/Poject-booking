@@ -2,7 +2,7 @@
 
 return [
     'name' => 'Building',
-    'createBuilding' => [
+    'create' => [
         'success' => 'Create building success.',
         'failed' => 'Create building Failed.'
     ],
@@ -10,9 +10,9 @@ return [
         'success' => 'Set building Failed',
         'failed' => 'Set building success'
     ],
-    'statusRoom' => [
-        'available' => 'Available',
-        'unavailable' => 'Unavailable'
+    'statusBuilding'=>[
+        'available'=> 'Availble',
+        'unavailable'=> 'Unavailble'
     ],
 
     'add' => 'Add Building',

@@ -9,6 +9,7 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title ">{{ __('building.title') }} </h4>
+            <input class="form-control" id="building" type="text" placeholder="พิมพ์ชื่อตึกเพื่อค้นหา..">
           </div>
           <div class="card-body">
             @if (session('success'))
@@ -63,8 +64,11 @@
                             <input type="text" class="form-control text-center" name="description">
                           </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <!-- <button type="submit" class="btn btn-primary" data-submit="modal">Submit</button> -->
+                            <button type="submit" class="btn btn-primary" data-submit="modal" onclick="this.classList.toggle('button--loading')">
+                              <span class="button__text">{{ __('building.button.submit') }}</span>
+                            </button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">{{ __('building.button.close') }}</button>
                           </div>
                         </form>
                       </div>
@@ -77,9 +81,9 @@
               <table class="table">
                 <thead class=" text-primary">
                   <tr>
-                    <th>
+                    <!-- <th>
                       {{ __('building.id') }}
-                    </th>
+                    </th> -->
                     <th>
                       {{ __('building.nameBuilding') }}
                     </th>
@@ -94,26 +98,81 @@
                     </th>
                   </tr>
                 </thead>
-                @foreach($building['data'] as $data)
-                <form action="{{ route('setBuildingPage',$data['id']) }}" method="POST">
+                <tbody id="myTable">
+
+                  @foreach($building as $data)
                   @csrf
                   <tr>
-                    <td>{{++$i}}</td>
-                    <td>{{$data['name']}}</td>
-                    <td>{{$data['description']}}</td>
-                    <td>{{$data['is_active']}}</td>
+                    <!-- <td>
+                    {{$data->id}}                    
+                  </td> -->
+                    <td>
+                      {{$data->name}}
+                    </td>
+                    <td>
+                      {{$data->description}}
+                    </td>
+                    <td>
+
+                      @if($data->is_active == 1)
+                      {{ __('building.statusBuilding.available') }}
+
+                      @elseif($data->is_active == 0)
+                      {{ __('building.statusBuilding.unavailable') }}
+
+                      @endif
+
+                    </td>
                     <td class="td-actions text-center">
-                      <button type="submit" class="btn btn-warning">
+                      <button type="button" title class="btn btn-warning btn-link btn-xl" data-toggle="modal" data-target="#EditmyModal" data-id="{{$data->id}}">
                         <i class="material-icons">edit</i>
                       </button>
                     </td>
                   </tr>
-                </form>
-                @endforeach
+                  @endforeach
+                </tbody>
               </table>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="EditmyModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{ __('building.setBuilding') }}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body text-center">
+        <form action="setBuilding" method="POST">
+          @csrf
+          <div>
+            <input type="hidden" class="form-control text-center" name="id" id="id">
+            <label>{{ __('room.modal.room name') }}</label>
+            <input type="text" class="form-control text-center" name="name" id="name" required>
+            <label>{{ __('room.modal.description') }}</label>
+            <input type="text" class="form-control text-center" name="description" id="description" required>
+            <label>{{ __('room.modal.limited people') }}</label>
+            <label>{{ __('building.statusBuilding.status') }}</label>
+            <select class="form-control text-center" name="is_active">
+              <option value="1">{{ __('building.statusBuilding.available') }}</option>
+              <option value="0">{{ __('building.statusBuilding.unavailable') }}</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="submit" class="btn btn-primary" data-submit="modal">{{ __('room.modal.button submit') }}</button> -->
+            <button type="submit" class="btn btn-primary" data-submit="modal" onclick="this.classList.toggle('button--loading')">
+              <span class="button__text">{{ __('building.button.submit') }}</span>
+            </button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">{{ __('building.button.close')}}</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

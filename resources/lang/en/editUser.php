@@ -5,18 +5,42 @@ return [
     'id' => 'ID',
     'name' => 'Name',
     'email' => 'Email',
-    'status' => 'Status',
+    
     'admin status' => 'Admin Status',
-    'edit' => 'Edit User',
+    'editResponse'=>'Set Response',
+    'setUser' => [
+        'failed' => 'Set User failed',
+        'success' => 'Set User success'
+    ],
+    'building'=>'Building',
+    'edit'=>'Edit User',
 
     'modal' => [
-        'is active' => 'Is Active',
-        'is admin' => 'Is Admin'
+        'is active' => 'Status',
+        'is admin' => 'Set Admin'
+    ],
+    'topic'=>[
+        'editUser' => 'Edit User',
+        'setResponse'=>'Set Response'
     ],
 
     'submit' => [
         'submit' => 'Save',
         'cancle' => 'Cancle'
-    ]
+    ],
+    'status' => [
+        'status' => 'Status',
+        'admin' => 'Admin',
+        'user' => 'User'
+    ],
+    'set' => [
+        'admin' => 'กำหนดให้เป็นแอดมิน',
+        'user' => 'กำหนดให้เป็นผู้ใช้งาน'
+    ],
+    'active'=>[
+        'true' => 'เปิดใช้งาน',
+        'false' => 'ไม่เปิดใช้งาน'
+    ],
+    
 
 ];

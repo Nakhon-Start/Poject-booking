@@ -12,8 +12,8 @@ return [
     ],
 
     'checker id' => 'รหัสผู้ดูแล',
-    'user id' => 'รหัสผู้ใช้',
-    'building id' => 'รหัสตึก',
+    'user id' => 'ชื่อผู้ใช้',
+    'building id' => 'ตึก',
 
     'modal' => [
         'button' => 'เพิ่มผู้ดูแล',
